@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  building_date: 2016-03-17
+  nb_reactor: MyString
+  has_hyperspace: false
+
+two:
+  building_date: 2016-03-17
+  nb_reactor: MyString
+  has_hyperspace: false
