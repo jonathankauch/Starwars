@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160317173919) do
+ActiveRecord::Schema.define(:version => 20160318140252) do
 
   create_table "pilots", :force => true do |t|
     t.string   "firstname"
@@ -25,21 +25,22 @@ ActiveRecord::Schema.define(:version => 20160317173919) do
 
   add_index "pilots", ["planet_id"], :name => "index_pilots_on_planet_id"
 
-  create_table "pilots_ships", :id => false, :force => true do |t|
-    t.integer "pilot_id"
-    t.integer "ship_id"
+  create_table "pilots_ships", :force => true do |t|
+    t.integer  "pilot_id"
+    t.integer  "ship_id"
+    t.datetime "last_utilisation", :null => false
   end
 
   create_table "planets", :force => true do |t|
     t.string   "name"
-    t.string   "planet_type"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ships", :force => true do |t|
     t.date     "building_date"
-    t.string   "nb_reactor"
+    t.string   "reactors"
     t.boolean  "has_hyperspace"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false

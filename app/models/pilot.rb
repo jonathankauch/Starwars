@@ -1,7 +1,7 @@
 class Pilot < ActiveRecord::Base
   attr_accessible :age, :firstname, :grade, :lastname, :planet_id, :ship_id
 
-  # Validator
+  # Validates
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :grade, :numericality => {
@@ -19,11 +19,16 @@ class Pilot < ActiveRecord::Base
                                   }
 
   # Relationship
-  has_and_belongs_to_many :ships
+  has_many :pilots_ships
+  has_many :ships, :through => :pilots_ships
   belongs_to :planet
 
   def formatted_name
-    self.firstname + " " + self.lastname
+    firstname + " " + lastname
+  end
+
+  def homeworld
+    planet = Planet.find(planet_id)
   end
 
 end
