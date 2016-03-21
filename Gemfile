@@ -11,6 +11,8 @@ gem 'sqlite3'
 gem 'hirb'
 # Rubocop
 gem 'rubocop', '~> 0.38.0', require: false
+# Factory girl
+gem 'factory_girl_rails', '~> 4.5.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,3 +42,8 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :development, :test do
+  # rspec for automatic testing
+  gem 'rspec-rails', '~> 3.0'
+end
