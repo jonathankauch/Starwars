@@ -25,12 +25,10 @@ $(document).ready(function() {
 
   var totalId = [];
 
-  var alertMe = function(position) {
-    var msg = "Position = " + position;
-    var say = function() {
-      alert(msg);
+  function createClosure(position) {
+    return function () {
+      return 'position = ' + position;
     }
-    return say;
   }
 
   $('.clickable').on('click', function() {
@@ -38,13 +36,23 @@ $(document).ready(function() {
     number = Math.round(number);
     $('#container').append("<div class='block " + colors[number] + "'></div>");
     $("#container").children().last().click(function() {
-      alertMe(total)();
+      console.log(createClosure(total)());
     });
     total = total + 1;
   });
 
-  $(document).on('click', '.block', function() {
-
-  });
+  /*
+  var array = [];
+  function createClosure(n) {
+      return function () {
+          return 'n = ' + n;
+      }
+  }
+  for (var index = 0; index < 10; index++) {
+      array[index] = createClosure(index);
+  }
+  for (var index in array) {
+      console.log(array[index]());
+  }*/
 
 });
